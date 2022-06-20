@@ -1,0 +1,97 @@
+extends ../layouts/main
+
+block content
+
+  // ==========  Login wrapper ==========
+  // ========================  Main header ========================
+  section.main-header(style='background-image:url(/images/PORTADA.webp)')
+    header
+      .container.text-center
+        h2.h2.title Detalle de producto
+        ol.breadcrumb.breadcrumb-inverted
+          li
+            a(href='/')
+              span.icon.icon-home
+  section.product#productDetailCostumer(data-productDetailCostumer = product)
+    .main
+      .container
+        .row.product-flex
+          .col-md-4.col-sm-12.product-flex-info
+            .info-box
+              a.btn.btn-default.btn-back(href='javascript: history.go(-1)')
+                span.icon.icon-arrow-left
+                span.mls  Volver
+            .clearfix
+              // === product-title ===
+              h1.title(data-title=`${product.category.name}` style='margin-top: 16px; word-break: break-word')
+                | {{productDetail.name}} 
+                small {{subCategory.name}}
+              .clearfix
+                // === price wrapper ===
+                .price
+                  span.h3
+                    | S/ {{productDetail.price}} 
+                    //small $ 2999,00
+                hr
+                // === info-box ===
+                .info-box
+                  span
+                    strong Categoría
+                  span {{category.name}}
+                // === info-box ===
+                .info-box
+                  span
+                    strong Subcategoría
+                  span {{subCategory.name}}
+                // === info-box ===
+                .info-box
+                  span
+                    strong Estado del mueble
+                  span {{productDetail.type}}
+                hr
+                .info-box
+                  span
+                    i.added(style='color: #5853FD; font-size: 18px; font-style: normal !important;')
+                      i.fa.fa-envira
+                      |  ¡Estas ahorrando {{subCategory.co2}} Kg de CO₂!
+                div(style='margin-left: 30px; font-size: 13px;')
+                  .info-box
+                    span
+                      i.added(style='color: #5853FD; font-style: normal !important;')
+                        |  Esto equivale a {{subCategory.carsRemovedxday}} autos eliminados de circulación durante el día,
+                  .info-box
+                    span
+                      i.added(style='color: #5853FD; font-style: normal !important;')
+                        |  a {{subCategory.cottonTshirt}} camisetas de algodón,
+                  .info-box
+                    span
+                      i.added(style='color: #5853FD; font-style: normal !important;')
+                        |  a {{subCategory.savedWater}} litros de agua ahorrada
+                  .info-box
+                    span
+                      i.added(style='color: #5853FD; font-style: normal !important;')
+                        |  y {{subCategory.treeCo2xday}} árboles absorviendo CO₂ en un día.
+          .col-md-8.col-sm-12.product-flex-gallery.pd-carrousel
+            // === add to cart ===
+            if user && product.customer.toString() !== user._id.toString()
+              a.btn.btn-buy-v2(type="button" style='outline: none; padding: 10px 0' href=`/producto/${product._id}/comprar`)
+                span(style='font-size: 17px;') Comprar
+            .owl-product-gallery.open-popup-gallery
+              div(v-for="(image, index) in productDetail.images")
+                a(:href='image')
+                  img.carrousel-modify(:src='image' alt='' height='500')
+    .info
+      .container
+        .row
+          // === nav-tabs ===
+          .col-md-12
+            // === tab-panes ===
+            .tab-content
+              // ============ tab #Specification ============
+              #design.tab-pane.active(role='tabpanel')
+                .content
+                  .row
+                    .col-md-12
+                      h3 Descripción
+                      p
+                      | {{productDetail.description}}
