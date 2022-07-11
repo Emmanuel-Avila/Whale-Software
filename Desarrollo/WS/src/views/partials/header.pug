@@ -1,0 +1,75 @@
+nav.navbar-fixed
+  .container
+    // ==========  Top navigation ==========
+    .navigation.navigation-top.clearfix
+      ul
+        // add active class for current page
+        li
+          a(href='https://www.facebook.com/1551UNMSM' target="_blank" style='color:#5853FD')
+            i.fa.fa-facebook.fs-20
+        li
+          a(href='https://www.instagram.com/unmsm_/?hl=es-la' target="_blank" style='color:#5853FD')
+            i.fa.fa-instagram.fs-20
+        li
+          a(href='https://pe.linkedin.com/school/unmsm/' target="_blank" style='color:#5853FD')
+            i.fa.fa-linkedin.fs-20
+        li
+          a(href='https://twitter.com/UNMSM_' target="_blank" style='color:#5853FD')
+            i.fa.fa-twitter.fs-20
+        if user && (user.type==0 || user.type==1)
+          li
+            a.open-login(href='javascript:void(0);' style='color:#5853FD')
+              i.icon.icon-user.fs-20
+    // /navigation-top
+    // ==========  Main navigation ==========
+    .navigation.navigation-main
+      // Setup your logo here
+      a.logo(href='/')
+        img.style-logo(style='height: 60px' src='/images/whalE.png' alt='')
+      // Mobile toggle menu
+      a.open-menu(href='#')
+        i.icon.icon-menu
+      // Convertible menu (mobile/desktop)
+      .floating-menu
+        // Mobile toggle menu trigger
+        .close-menu-wrapper
+          span.close-menu
+            i.icon.icon-cross
+        ul
+          li
+            a(href='/') Inicio
+          // Multi-content dropdown
+          if user && (user.type==1)
+            li
+              a(href='/mis-productos-ofertados')
+                | Mis muebles 
+            li
+              a(href='/mis-productos-vendidos')
+                | Mis ventas
+
+          if user && (user.type==0)
+            li
+              a(href='/admin/productos-vendidos')
+                | Vendidos 
+            li
+              a(href='/admin/productos-ofertados')
+                | En oferta
+
+          if !user
+            li
+              a(href='/login')
+                | Iniciar sesión
+
+    .login-wrapper
+      .h4 Opciones
+      a.btn.btn-default(href='/salir') Cerrar sesión
+  style(scoped='').
+    .style-logo {
+      margin: -5px 5px 0;
+    }
+
+    @media (max-width: 416px){
+      .style-logo {
+        margin: 0px 5px 0;
+      }
+    }

@@ -1,0 +1,42 @@
+// ================== Footer  ==================
+footer
+  .container
+    // footer showroom
+    .footer-showroom
+      .row
+        .col-sm-7
+          //h2 Visita WhalE
+          img.style-logo(style='height: 125px' src='/images/whalEwhite.png' alt='')
+        .col-sm-5(style='color: white')
+          p Responsabilidad social:
+          p.footer-schedule Apoyar el desarrollo sostenible con el objetivo n°13 de las Naciones Unidas "Acción por el clima"
+            |  fomentando la concientización sobre las emisiones de CO₂.
+          | "El cambio climático es un reto global que no respeta las fronteras nacionales"
+          
+    .footer-social
+      .row
+        .col-sm-4(style='color: white')
+          a(style='color: white') ©Copyright2021
+        .col-sm-4
+          p(style='color: white; text-align:center') Made by
+            a(style='color: white' href='https://www.unmsm.edu.pe/' target='-blank')    FISI-UNMSM 
+        .col-sm-4.links(style='color: white')
+          a(href='https://www.un.org/sustainabledevelopment/es/climate-change-2/' target="_blank" style='color: white') Naciones Unidas
+            img.style-logo(style='height: 30px' src='/images/onu.svg' alt='Organización de las Naciones Unidas')
+  style(scoped='').
+    .footer-schedule {
+      margin-left: 20px;
+    }
+
+    .footer-address{
+      margin: 32px 0 0 48px;
+    }
+
+    @media (max-width: 766px){
+      .footer-schedule {
+        margin-left: 0px;
+      }
+      .footer-address {
+        margin: 10px 0 0 0;
+      }
+    }
